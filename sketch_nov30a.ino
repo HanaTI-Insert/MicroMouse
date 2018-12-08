@@ -1,3 +1,29 @@
+/*
+  ButtonMouseControl
+
+  For Leonardo and Due boards only.
+
+  Controls the mouse from five pushbuttons on an Arduino Leonardo, Micro or Due.
+
+  Hardware:
+  - five pushbuttons attached to D2, D3, D4, D5, D6
+
+  The mouse movement is always relative. This sketch reads four pushbuttons,
+  and uses them to set the movement of the mouse.
+
+  WARNING: When you use the Mouse.move() command, the Arduino takes over your
+  mouse! Make sure you have control before you use the mouse commands.
+
+  created 15 Mar 2012
+  modified 27 Mar 2012
+  by Tom Igoe
+
+  This example code is in the public domain.
+
+  http://www.arduino.cc/en/Tutorial/ButtonMouseControl
+*/
+
+#include "Mouse.h"
 
 /*
   ButtonMouseControl
@@ -46,24 +72,24 @@ void setup() {
 
 void loop() {
 
-  for (int i=0; i <= 255; i++){
-    Mouse.move(5, 5, 0);
+  for (int i=0; i <= 5; i++){
+    Mouse.move(range, range, 0);
     delay(responseDelay);
   }
-  Mouse.press(MOUSE_LEFT);
-    for (int i=0; i <= 255; i++){
-    Mouse.move(5, -5, 0);
+  Mouse.click(MOUSE_LEFT);
+  for (int i=0; i <= 5; i++){
+    Mouse.move(range, -range, 0);
     delay(responseDelay);
   }
-  Mouse.press(MOUSE_LEFT);
-    for (int i=0; i <= 255; i++){
-    Mouse.move(-5, 5, 0);
+  Mouse.click(MOUSE_LEFT);
+  for (int i=0; i <= 5; i++){
+    Mouse.move(-range, -range, 0);
     delay(responseDelay);
   }
-  Mouse.press(MOUSE_LEFT);
-    for (int i=0; i <= 255; i++){
-    Mouse.move(-5, -5, 0);
+  Mouse.click(MOUSE_LEFT);
+  for (int i=0; i <= 5; i++){
+    Mouse.move(-range, range, 0);
     delay(responseDelay);
   }
-  Mouse.press(MOUSE_LEFT);
+  Mouse.click(MOUSE_LEFT);
 }
